@@ -8,7 +8,6 @@ import Smurfs from './components/Smurfs';
 
 const App = () => {
   const [smurfs, setSmurfs] = useState([]);
-  const [newSmurf, setNewSmurf] = useState({ name: '', age: '', height: '' });
 
   // add any needed code to ensure that the smurfs collection exists on state and it has data coming from the server
   // Notice what your map function is looping over and returning inside of Smurfs.
@@ -28,15 +27,6 @@ const App = () => {
     e.persist();
     axios
       .delete(`http://localhost:3333/smurfs/${id}`)
-      .then(res => setSmurfs(res.data))
-      .catch(err => console.log(err))
-    setMounted(false);
-  }
-
-  const updateSmurf = (e, id, updatedSmurf) => {
-    e.persist();
-    axios
-      .put(`http://localhost:3333/smurfs/${id}`, updatedSmurf)
       .then(res => setSmurfs(res.data))
       .catch(err => console.log(err))
     setMounted(false);
@@ -63,7 +53,12 @@ const App = () => {
         >New Smurf</NavLink>
       </header>
       <Route exact path='/smurfs' render={props => (
-        <Smurfs smurfs={smurfs} deleteSmurf={deleteSmurf} updateSmurf={updateSmurf} />
+        <Smurfs
+          smurfs={smurfs}
+          deleteSmurf={deleteSmurf}
+          setSmurfs={setSmurfs}
+          setMounted={setMounted}
+        />
       )} />
       <Route path='/add-smurf' component={SmurfForm} />
     </div>

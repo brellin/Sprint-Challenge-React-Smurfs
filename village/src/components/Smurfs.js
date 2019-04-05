@@ -16,8 +16,9 @@ const Smurfs = props => {
                 age={smurf.age}
                 height={smurf.height}
                 deleteSmurf={props.deleteSmurf}
+                setSmurfs={props.setSmurfs}
+                setMounted={props.setMounted}
                 key={smurf.id}
-                updateSmurf={props.updateSmurf}
               />
             );
           })}
