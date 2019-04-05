@@ -16,6 +16,7 @@ class Smurfs extends Component {
                   id={smurf.id}
                   age={smurf.age}
                   height={smurf.height}
+                  deleteSmurf={this.props.deleteSmurf}
                   key={smurf.id}
                 />
               );

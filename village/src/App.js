@@ -29,7 +29,13 @@ class App extends Component {
       .catch(err => console.log(err))
   }
 
-
+  deleteSmurf = (e, id) => {
+    e.persist();
+    axios
+      .delete(`http://localhost:3333/smurfs/${id}`)
+      .then(res => this.setState({ smurfs: res.data }))
+      .catch(err => console.log(err))
+  }
 
   render() {
     return (
@@ -53,7 +59,7 @@ class App extends Component {
           >New Smurf</NavLink>
         </header>
         <Route exact path='/smurfs' render={props => (
-          <Smurfs smurfs={this.state.smurfs} />
+          <Smurfs smurfs={this.state.smurfs} deleteSmurf={this.deleteSmurf} />
         )} />
         <Route path='/add-smurf' component={SmurfForm} />
       </div>
