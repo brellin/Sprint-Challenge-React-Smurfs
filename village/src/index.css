@@ -1,5 +1,13 @@
+html {
+    font-size: 62.5%;
+}
+
 body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    color: skyblue;
+    font-size: 1.5rem;
+    font-family: Arial, Helvetica, sans-serif;
+    background: skyblue;
+    box-sizing: border-box;
 }

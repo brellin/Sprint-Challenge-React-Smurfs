@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Route, Link } from 'react-router-dom';
-import { AnimatedSwitch } from 'react-router-transition';
+import { Route, NavLink } from 'react-router-dom';
 
 import './App.css';
 import SmurfForm from './components/SmurfForm';
@@ -36,18 +35,27 @@ class App extends Component {
     return (
       <div className="App">
         <header>
-          <Link to='/'>Smurfs Home</Link>
-          <Link to='/add-smurf'>New Smurf</Link>
+          <NavLink
+            to='/smurfs'
+            activeStyle={{
+              border: '1px ridge whitesmoke',
+              background: 'skyblue',
+              borderRadius: '5px'
+            }}
+          >Smurfs Home</NavLink>
+          <NavLink
+            to='/add-smurf'
+            activeStyle={{
+              border: '1px ridge whitesmoke',
+              background: 'skyblue',
+              borderRadius: '5px'
+            }}
+          >New Smurf</NavLink>
         </header>
-        <AnimatedSwitch
-          atEnter={{ opacity: 0 }}
-          atLeave={{ opacity: 0 }}
-          atActive={{ opacity: 1 }}>
-          <Route exact path='/' render={props => (
-            <Smurfs smurfs={this.state.smurfs} />
-          )} />
-          <Route path='/add-smurf' component={SmurfForm} />
-        </AnimatedSwitch>
+        <Route exact path='/smurfs' render={props => (
+          <Smurfs smurfs={this.state.smurfs} />
+        )} />
+        <Route path='/add-smurf' component={SmurfForm} />
       </div>
     );
   }
